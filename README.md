@@ -10,6 +10,7 @@
   </li>
 </ul>
 <h2>Resources -</h2> 
+<p>Data can be accessed on the OneDrive under Data/Ultrasound/Layered electrode study</p>
 <h3><a href="https://scikit-learn.org/stable/index.html">Scikit Learn - </a></h3>
 <ul>
   <li>
