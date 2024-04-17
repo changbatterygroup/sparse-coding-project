@@ -1,6 +1,6 @@
 <h1>Sparse Coding Ultrasound Project</h1> 
 
-<h2>Objectives- </h2> 
+<h2>Objectives - </h2> 
 <ul>
   <li>
     Determine basis sets to represent layers of material in a multilayered composite using data gathered for different combinations of material layers
@@ -10,7 +10,7 @@
   </li>
 </ul>
 <h2>Resources -</h2> 
-<h3><a href="https://scikit-learn.org/stable/index.html">Scikit Learn- </a></h3>
+<h3><a href="https://scikit-learn.org/stable/index.html">Scikit Learn - </a></h3>
 <ul>
   <li>
 <h4><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.dict_learning.html">Dictionary Learning</a></h4>
