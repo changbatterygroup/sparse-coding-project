@@ -11,28 +11,11 @@ filesAL = ['20240216_WC_GJ_water-ref_dur15_del1p5_50MHz.sqlite3', '20240216_WC_G
          '20240216_WC_GJ_Al-n=2_dur15_del1p5_50MHz.sqlite3', '20240216_WC_GJ_Al-n=3_dur15_del1p5_50MHz.sqlite3',
          '20240216_WC_GJ_Al-n=4_dur15_del1p5_50MHz.sqlite3', '20240216_WC_GJ_Al-n=5_dur15_del1p5_50MHz.sqlite3']
 
-####################################
-def fft_acoustics(waves, interval=1 / 5e8, pad_x=2):
-    l = len(waves[0]) * pad_x
-    n_waves = len(waves)
-    z = np.zeros((n_waves, l), dtype='uint8')
-
-    pad_waves = np.concatenate((z, waves, z), axis=1)
-
-    m = np.mean(pad_waves, axis=-1)
-    detrend = np.subtract(pad_waves.T, m).T
-    amps = np.abs(np.fft.rfft(detrend, axis=-1))
-    amps = np.divide(amps.T, np.max(amps, axis=-1)).T
-
-    freqs = np.fft.rfftfreq(len(detrend[0]), d=interval)
-    return freqs, amps
-################################################
-
-
 
 ###################
-for n, f in enumerate(filesAL):
-    connection = sqlite3.connect(file_dir + f)
+for file in filesAL:
+    # Wes's code
+    connection = sqlite3.connect(file_dir + file)
     cursor = connection.cursor()
     query = """SELECT name FROM sqlite_master WHERE type='table'"""
     cursor.execute(query)
@@ -63,14 +46,7 @@ for n, f in enumerate(filesAL):
   #      plt.plot(approximation, label=f'Approximation {i + 1}')
    # approximations = sparse_coder.inverse_transform(sparse_reps)
    # plt.plot(approximations)
-    amps = []
-    times = (df['time'] - df['time'].iloc[0]) / 3600.
-    tofshift = []
-    tofs = np.linspace(11, 11 + 3, len(waves[0]))
 
-    freqs, amps = fft_acoustics(waves)
-    normalize = Normalize(vmin=0, vmax=len(filesAL))
-    print(n, f)
     plt.grid(True)
     plt.show()
 
